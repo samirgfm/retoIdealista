@@ -19,6 +19,7 @@ public class AdsController {
     public ResponseEntity<List<QualityAd>> qualityListing() {
         if(!seHaCalculado){
             adService.calculateScore();
+            seHaCalculado=true;
         }
         Optional<List<QualityAd>> ads = Optional.of(adService.listQualityAds());
         return ResponseEntity.of(ads); // Responde con la lista solicitada
@@ -27,6 +28,7 @@ public class AdsController {
     @RequestMapping(value = "/public/listing", method = RequestMethod.GET)
     public ResponseEntity<List<PublicAd>> publicListing() {
         if(!seHaCalculado){
+            seHaCalculado=true;
             adService.calculateScore();
         }
         Optional<List<PublicAd>> ads = Optional.of(adService.listPublicAds());

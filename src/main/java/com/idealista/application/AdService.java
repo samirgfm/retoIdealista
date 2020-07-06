@@ -52,7 +52,11 @@ public class AdService {
 
     private List<PublicAd> publicAdsMapper(List<AdVO> voList, List<PictureVO> voPictures) {
         List<PublicAd> result = new ArrayList<>();
-        List<AdVO> copia = voList;
+        List<AdVO> copia = new ArrayList<>();
+        for(AdVO adVOrelleno : voList){
+            copia.add(adVOrelleno);
+        }
+
         while (copia.size() != 0) {
             PublicAd ad = new PublicAd();
             AdVO adVOCandidato = new AdVO();
@@ -82,7 +86,7 @@ public class AdService {
             }
 
         }
-
+        System.out.println(voList.size());
         return result;
     }
     public void calculateScore() {
